@@ -12,8 +12,15 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                RadialGradient(gradient: Gradient(colors: [.orange, .red]), center: .center, startRadius: 30, endRadius: 200).edgesIgnoringSafeArea(.all)
-                Text("Hello world")
+                RadialGradient(gradient: Gradient(colors: [.white, .black]), center: .center, startRadius: 30, endRadius: 300).edgesIgnoringSafeArea(.all)
+                Button(action: {
+                    print("editing")
+                }) {
+                    HStack {
+                        Image(systemName: "pencil")
+                        Text("Edit")
+                    }
+                }
             }
             ZStack {
                 AngularGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple]), center: .center).edgesIgnoringSafeArea(.all)
