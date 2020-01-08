@@ -10,23 +10,36 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            Color.green.edgesIgnoringSafeArea(.all)
-            VStack(spacing: 20) {
-                HStack(alignment: .center, spacing: 20) {
-                    Text("1")
-                    Text("2")
-                    Text("3")
+        VStack(spacing: 0) {
+            ZStack {
+                RadialGradient(gradient: Gradient(colors: [.orange, .red]), center: .center, startRadius: 30, endRadius: 200).edgesIgnoringSafeArea(.all)
+                Text("Hello world")
+            }
+            ZStack {
+                AngularGradient(gradient: Gradient(colors: [.red, .orange, .yellow, .green, .blue, .purple]), center: .center).edgesIgnoringSafeArea(.all)
+                VStack(spacing: 20) {
+                    Text("woah")
+                    Text("there")
                 }
-                HStack(spacing: 20) {
-                    Text("4")
-                    Text("5")
-                    Text("6")
-                }
-                HStack(spacing: 20) {
-                    Text("7")
-                    Text("8")
-                    Text("9")
+            }
+            ZStack {
+                Color.green.edgesIgnoringSafeArea(.all)
+                VStack(spacing: 20) {
+                    HStack(alignment: .center, spacing: 20) {
+                        Text("1")
+                        Text("2")
+                        Text("3")
+                    }
+                    HStack(spacing: 20) {
+                        Text("4")
+                        Text("5")
+                        Text("6")
+                    }
+                    HStack(spacing: 20) {
+                        Text("7")
+                        Text("8")
+                        Text("9")
+                    }
                 }
             }
         }
