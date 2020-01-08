@@ -38,6 +38,9 @@ struct ContentView: View {
                         .shadow(color: .white, radius: 2)
                 }
                 Spacer()
+                Text("Current Score: \(score)")
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
             }
         }.alert(isPresented: $showingScore) {
             Alert(title: Text(scoreTitle), message: Text("Your score is \(score)"), dismissButton: .default(Text("Continue")) { self.askNextQuestion()})
