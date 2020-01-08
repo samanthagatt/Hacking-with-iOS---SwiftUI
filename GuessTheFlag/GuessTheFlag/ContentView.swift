@@ -17,18 +17,24 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color.blue.edgesIgnoringSafeArea(.all)
+            LinearGradient(gradient: Gradient(colors: [.blue, .black]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all)
             VStack(spacing: 30) {
                 VStack() {
-                    Text("Tap the flag of").foregroundColor(.white)
-                    Text(countries[correctAnswer]).foregroundColor(.white)
+                    Text("Tap the flag of")
+                        .foregroundColor(.white)
+                    Text(countries[correctAnswer])
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .fontWeight(.black)
                 }
                 ForEach(0..<3) { i in
                     Button(action: {
                         self.showScore(i)
                     }) {
                         Image(self.countries[i]).renderingMode(.original)
-                    }
+                    }.clipShape(Capsule())
+                        .overlay(Capsule().stroke(Color.white, lineWidth: 2))
+                        .shadow(color: .white, radius: 2)
                 }
                 Spacer()
             }
