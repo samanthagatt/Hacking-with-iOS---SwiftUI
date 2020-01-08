@@ -9,17 +9,22 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var alertIsPresented = false
+    
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
                 RadialGradient(gradient: Gradient(colors: [.white, .black]), center: .center, startRadius: 30, endRadius: 300).edgesIgnoringSafeArea(.all)
                 Button(action: {
-                    print("editing")
+                    self.alertIsPresented = true
                 }) {
                     HStack {
                         Image(systemName: "pencil")
                         Text("Edit")
                     }
+                }.alert(isPresented: $alertIsPresented) {
+                    Alert(title: Text("Edit"), message: Text("There's nothing to edit"), dismissButton: .default(Text("Okay")))
                 }
             }
             ZStack {
