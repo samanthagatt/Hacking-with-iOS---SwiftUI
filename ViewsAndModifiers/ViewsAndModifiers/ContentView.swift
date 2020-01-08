@@ -10,10 +10,35 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
-            .frame( maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.red)
-            .edgesIgnoringSafeArea(.all)
+        ZStack {
+            Text("Hello, World!")
+                .frame( maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.red)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                Text("rainbow")
+                    .padding()
+                    .background(Color.red)
+                    .padding()
+                    .background(Color.orange)
+                    .padding()
+                    .background(Color.yellow)
+                    .padding()
+                    .background(Color.green)
+                    .padding()
+                    .background(Color.blue)
+                    .padding()
+                    .background(Color.purple)
+                    .padding()
+                    .background(Color.black)
+                Spacer()
+                Button("Hello") {
+                    // prints `ModifiedContent<ModifiedContent<Text, _FrameLayout>, _BackgroundModifier<Color>>`
+                    print(type(of: Text("Hello").frame(width: 100, height: 100).background(Color.blue)))
+                }.frame(width: 200, height: 200)
+                    .background(Color.yellow)
+            }
+        }
     }
 }
 
