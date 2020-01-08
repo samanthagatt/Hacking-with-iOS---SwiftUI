@@ -34,7 +34,7 @@ struct ContentView: View {
                 Spacer()
                 VStack {
                     Text("1")
-                    Text("2")
+                    Text("2").font(.body)
                     Text("3")
                 }.font(.title)
                 Button("Hello") {
