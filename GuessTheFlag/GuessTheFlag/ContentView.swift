@@ -13,7 +13,8 @@ struct ContentView: View {
     @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
     @State private var showingScore = false
-    @State private var scoreTitle = ""
+    @State private var answerAlertTitle = ""
+    @State private var answerAlertDetail = ""
     @State private var score = 0
     
     var body: some View {
@@ -30,7 +31,7 @@ struct ContentView: View {
                 }
                 ForEach(0..<3) { i in
                     Button(action: {
-                        self.showScore(i)
+                        self.showResult(i)
                     }) {
                         Image(self.countries[i]).renderingMode(.original)
                     }.clipShape(Capsule())
@@ -43,13 +44,14 @@ struct ContentView: View {
                     .fontWeight(.bold)
             }
         }.alert(isPresented: $showingScore) {
-            Alert(title: Text(scoreTitle), message: Text("Your score is \(score)"), dismissButton: .default(Text("Continue")) { self.askNextQuestion()})
+            Alert(title: Text(answerAlertTitle), message: Text(answerAlertDetail), dismissButton: .default(Text("Continue")) { self.askNextQuestion()})
         }
     }
     
-    private func showScore(_ number: Int) {
+    private func showResult(_ number: Int) {
         let isCorrect = number == correctAnswer
-        scoreTitle = isCorrect ? "Correct" : "Wrong"
+        answerAlertTitle = isCorrect ? "Correct" : "Wrong"
+        answerAlertDetail = isCorrect ? "Good job!" : "That's the flag of \(countries[number])"
         if isCorrect { score += 1 }
         showingScore = true
     }
