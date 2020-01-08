@@ -15,6 +15,15 @@ struct ContentView: View {
     @State private var tipPercentage = 2
     
     private let tipPercentages = [10, 15, 20, 25, 0]
+    private var totalPerPerson: Double {
+        // number of people range starts at 2 with 0 indexing so add 2
+        let peopleCount = Double(numberOfPeople + 2)
+        let tipPercent = Double(tipPercentages[tipPercentage])
+        let billAmount = Double(checkAmount) ?? 0.0
+        let tipAmount = billAmount * (tipPercent / 100)
+        let totalAmount = billAmount + tipAmount
+        return totalAmount / peopleCount
+    }
     
     var body: some View {
         NavigationView {
@@ -34,6 +43,9 @@ struct ContentView: View {
                             Text("\(self.tipPercentages[$0])%")
                         }
                     }.pickerStyle(SegmentedPickerStyle())
+                }
+                Section() {
+                    Text("$\(totalPerPerson, specifier: "%.2f")")
                 }
             }.navigationBarTitle("WeSplit")
         }
