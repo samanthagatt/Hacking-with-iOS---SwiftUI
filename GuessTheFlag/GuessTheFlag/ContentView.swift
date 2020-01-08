@@ -10,21 +10,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 20) {
-            HStack(alignment: .center, spacing: 20) {
-                Text("1")
-                Text("2")
-                Text("3")
-            }
-            HStack(spacing: 20) {
-                Text("4")
-                Text("5")
-                Text("6")
-            }
-            HStack(spacing: 20) {
-                Text("7")
-                Text("8")
-                Text("9")
+        ZStack {
+            Color.green.edgesIgnoringSafeArea(.all)
+            VStack(spacing: 20) {
+                HStack(alignment: .center, spacing: 20) {
+                    Text("1")
+                    Text("2")
+                    Text("3")
+                }
+                HStack(spacing: 20) {
+                    Text("4")
+                    Text("5")
+                    Text("6")
+                }
+                HStack(spacing: 20) {
+                    Text("7")
+                    Text("8")
+                    Text("9")
+                }
             }
         }
     }
