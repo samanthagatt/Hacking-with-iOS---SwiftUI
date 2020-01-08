@@ -9,39 +9,53 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    private var backgroundHelloWorld: some View {
+        Text("Hello, World!")
+            .frame( maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.red)
+            .edgesIgnoringSafeArea(.all)
+    }
+    private var rainbowText: some View {
+        Text("rainbow")
+            .padding()
+            .background(Color.red)
+            .padding()
+            .background(Color.orange)
+            .padding()
+            .background(Color.yellow)
+            .padding()
+            .background(Color.green)
+            .padding()
+            .background(Color.blue)
+            .padding()
+            .background(Color.purple)
+            .padding()
+            .background(Color.black)
+    }
+    private var environmentModifierStack: some View {
+        VStack {
+            Text("1")
+            Text("2").font(.body)
+            Text("3")
+        }.font(.title)
+    }
+    private var buttonWithYellowBackground: some View {
+        Button("Hello") {
+            // prints `ModifiedContent<ModifiedContent<Text, _FrameLayout>, _BackgroundModifier<Color>>`
+            print(type(of: Text("Hello").frame(width: 100, height: 100).background(Color.blue)))
+        }.frame(width: 200, height: 200)
+            .background(Color.yellow)
+    }
+    
     var body: some View {
         ZStack {
-            Text("Hello, World!")
-                .frame( maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.red)
-                .edgesIgnoringSafeArea(.all)
+            backgroundHelloWorld
             VStack(spacing: 20) {
-                Text("rainbow")
-                    .padding()
-                    .background(Color.red)
-                    .padding()
-                    .background(Color.orange)
-                    .padding()
-                    .background(Color.yellow)
-                    .padding()
-                    .background(Color.green)
-                    .padding()
-                    .background(Color.blue)
-                    .padding()
-                    .background(Color.purple)
-                    .padding()
-                    .background(Color.black)
+                rainbowText
                 Spacer()
-                VStack {
-                    Text("1")
-                    Text("2").font(.body)
-                    Text("3")
-                }.font(.title)
-                Button("Hello") {
-                    // prints `ModifiedContent<ModifiedContent<Text, _FrameLayout>, _BackgroundModifier<Color>>`
-                    print(type(of: Text("Hello").frame(width: 100, height: 100).background(Color.blue)))
-                }.frame(width: 200, height: 200)
-                    .background(Color.yellow)
+                environmentModifierStack
+                buttonWithYellowBackground
             }
         }
     }
