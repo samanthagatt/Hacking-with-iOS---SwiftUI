@@ -10,7 +10,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        Form {
+            Section {
+                Text("Hello")
+                Group {
+                    Text("Hello, World!")
+                    Text("I'm in a group with the text above me!")
+                }
+                Text("hello again")
+            }
+            Section {
+                Text("Woah there. Here's another section")
+            }
+        }
     }
 }
 
