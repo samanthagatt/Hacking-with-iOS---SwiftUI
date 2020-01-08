@@ -28,8 +28,14 @@ struct ContentView: View {
                         }
                     }
                 }
-            }
-            .navigationBarTitle("WeSplit")
+                Section(header: Text("How much tip would you like to leave?")) {
+                    Picker("Tip percentage", selection: $tipPercentage) {
+                        ForEach(0..<tipPercentages.count) {
+                            Text("\(self.tipPercentages[$0])%")
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
+                }
+            }.navigationBarTitle("WeSplit")
         }
     }
 }
