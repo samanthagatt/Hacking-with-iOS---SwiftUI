@@ -15,7 +15,7 @@ struct ContentView: View {
                 .frame( maxWidth: .infinity, maxHeight: .infinity)
                 .background(Color.red)
                 .edgesIgnoringSafeArea(.all)
-            VStack {
+            VStack(spacing: 20) {
                 Text("rainbow")
                     .padding()
                     .background(Color.red)
@@ -32,6 +32,11 @@ struct ContentView: View {
                     .padding()
                     .background(Color.black)
                 Spacer()
+                VStack {
+                    Text("1")
+                    Text("2")
+                    Text("3")
+                }.font(.title)
                 Button("Hello") {
                     // prints `ModifiedContent<ModifiedContent<Text, _FrameLayout>, _BackgroundModifier<Color>>`
                     print(type(of: Text("Hello").frame(width: 100, height: 100).background(Color.blue)))
