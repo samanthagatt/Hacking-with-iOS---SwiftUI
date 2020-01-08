@@ -10,18 +10,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Form {
-            Section {
-                Text("Hello")
-                Group {
-                    Text("Hello, World!")
-                    Text("I'm in a group with the text above me!")
+        NavigationView {
+            Form {
+                Section {
+                    Text("Hello")
+                    Group {
+                        Text("Hello, World!")
+                        Text("I'm in a group with the text above me!")
+                    }
+                    Text("hello again")
                 }
-                Text("hello again")
+                Section {
+                    Text("Woah there. Here's another section")
+                }
             }
-            Section {
-                Text("Woah there. Here's another section")
-            }
+            .navigationBarTitle(Text("SwiftUI"))
         }
     }
 }
