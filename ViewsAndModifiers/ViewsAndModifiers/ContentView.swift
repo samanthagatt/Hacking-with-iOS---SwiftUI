@@ -63,10 +63,8 @@ struct ContentView: View {
             print(type(of: Text("Hello").frame(width: 100, height: 100).background(Color.blue)))
         }) {
             GridStack(rows: 3, columns: 3){ (row, column) in
-                HStack {
-                    Image(systemName: "\(self.gridStackContent[row][column]).circle")
-                    Text("(\(row), \(column))")
-                }
+                Image(systemName: "\(self.gridStackContent[row][column]).circle")
+                Text("(\(row), \(column))")
 //                Text("\(self.gridStackContent[row][column])")
             }.frame(width: 300, height: 150)
                 .background(Color.yellow)
