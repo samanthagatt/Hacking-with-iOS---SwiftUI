@@ -12,6 +12,7 @@ struct ContentView: View {
     
     private var backgroundHelloWorld: some View {
         Text("Hello, World!")
+            .titleStyle()
             .frame( maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.red)
             .edgesIgnoringSafeArea(.all)
