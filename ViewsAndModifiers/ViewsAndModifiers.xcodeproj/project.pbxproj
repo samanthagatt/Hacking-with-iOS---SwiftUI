@@ -13,6 +13,7 @@
 		D60E69CB23C6974000DAF6D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E69CA23C6974000DAF6D3 /* Assets.xcassets */; };
 		D60E69CE23C6974000DAF6D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E69CD23C6974000DAF6D3 /* Preview Assets.xcassets */; };
 		D60E69D123C6974000DAF6D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60E69CF23C6974000DAF6D3 /* LaunchScreen.storyboard */; };
+		D60E69D923C6A3E600DAF6D3 /* CapsuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60E69D823C6A3E600DAF6D3 /* CapsuleText.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D60E69CD23C6974000DAF6D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D60E69D023C6974000DAF6D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D60E69D223C6974000DAF6D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D60E69D823C6A3E600DAF6D3 /* CapsuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleText.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				D60E69C423C6973F00DAF6D3 /* AppDelegate.swift */,
 				D60E69C623C6973F00DAF6D3 /* SceneDelegate.swift */,
 				D60E69C823C6973F00DAF6D3 /* ContentView.swift */,
+				D60E69D823C6A3E600DAF6D3 /* CapsuleText.swift */,
 				D60E69CA23C6974000DAF6D3 /* Assets.xcassets */,
 				D60E69CF23C6974000DAF6D3 /* LaunchScreen.storyboard */,
 				D60E69D223C6974000DAF6D3 /* Info.plist */,
@@ -148,6 +151,7 @@
 			files = (
 				D60E69C523C6973F00DAF6D3 /* AppDelegate.swift in Sources */,
 				D60E69C723C6973F00DAF6D3 /* SceneDelegate.swift in Sources */,
+				D60E69D923C6A3E600DAF6D3 /* CapsuleText.swift in Sources */,
 				D60E69C923C6973F00DAF6D3 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,20 +18,28 @@ struct ContentView: View {
     }
     private var rainbowText: some View {
         Text("rainbow")
-            .padding()
+            .padding(10)
             .background(Color.red)
-            .padding()
+            .padding(10)
             .background(Color.orange)
-            .padding()
+            .padding(10)
             .background(Color.yellow)
-            .padding()
+            .padding(10)
             .background(Color.green)
-            .padding()
+            .padding(10)
             .background(Color.blue)
-            .padding()
+            .padding(10)
             .background(Color.purple)
-            .padding()
+            .padding(10)
             .background(Color.black)
+    }
+    private var capsuleTextStack: some View {
+        VStack(spacing: 10) {
+            CapsuleText(text: "Hello world")
+            CapsuleText(text: "World hello", foregroundColor: .black)
+        }
+        // String was getting truncated inside text view sometimes
+        .frame(maxWidth: .infinity)
     }
     private var environmentModifierStack: some View {
         VStack {
@@ -44,7 +52,7 @@ struct ContentView: View {
         Button("Hello") {
             // prints `ModifiedContent<ModifiedContent<Text, _FrameLayout>, _BackgroundModifier<Color>>`
             print(type(of: Text("Hello").frame(width: 100, height: 100).background(Color.blue)))
-        }.frame(width: 200, height: 200)
+        }.frame(width: 150, height: 150)
             .background(Color.yellow)
     }
     
@@ -53,6 +61,7 @@ struct ContentView: View {
             backgroundHelloWorld
             VStack(spacing: 20) {
                 rainbowText
+                capsuleTextStack
                 Spacer()
                 environmentModifierStack
                 buttonWithYellowBackground
