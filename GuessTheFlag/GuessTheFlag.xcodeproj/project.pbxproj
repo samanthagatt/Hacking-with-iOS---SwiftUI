@@ -13,6 +13,7 @@
 		D60E69AB23C5785800DAF6D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E69AA23C5785800DAF6D3 /* Assets.xcassets */; };
 		D60E69AE23C5785800DAF6D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E69AD23C5785800DAF6D3 /* Preview Assets.xcassets */; };
 		D60E69B123C5785800DAF6D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60E69AF23C5785800DAF6D3 /* LaunchScreen.storyboard */; };
+		D60E69E123C7DB0100DAF6D3 /* FlagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60E69E023C7DB0100DAF6D3 /* FlagImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D60E69AD23C5785800DAF6D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D60E69B023C5785800DAF6D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D60E69B223C5785800DAF6D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D60E69E023C7DB0100DAF6D3 /* FlagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				D60E69A423C5785600DAF6D3 /* AppDelegate.swift */,
 				D60E69A623C5785600DAF6D3 /* SceneDelegate.swift */,
 				D60E69A823C5785600DAF6D3 /* ContentView.swift */,
+				D60E69E023C7DB0100DAF6D3 /* FlagImage.swift */,
 				D60E69AA23C5785800DAF6D3 /* Assets.xcassets */,
 				D60E69AF23C5785800DAF6D3 /* LaunchScreen.storyboard */,
 				D60E69B223C5785800DAF6D3 /* Info.plist */,
@@ -149,6 +152,7 @@
 				D60E69A523C5785600DAF6D3 /* AppDelegate.swift in Sources */,
 				D60E69A723C5785600DAF6D3 /* SceneDelegate.swift in Sources */,
 				D60E69A923C5785600DAF6D3 /* ContentView.swift in Sources */,
+				D60E69E123C7DB0100DAF6D3 /* FlagImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

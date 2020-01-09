@@ -33,10 +33,8 @@ struct ContentView: View {
                     Button(action: {
                         self.showResult(i)
                     }) {
-                        Image(self.countries[i]).renderingMode(.original)
-                    }.clipShape(Capsule())
-                        .overlay(Capsule().stroke(Color.white, lineWidth: 2))
-                        .shadow(color: .white, radius: 2)
+                        FlagImage(name: self.countries[i])
+                    }
                 }
                 Spacer()
                 Text("Current Score: \(score)")
