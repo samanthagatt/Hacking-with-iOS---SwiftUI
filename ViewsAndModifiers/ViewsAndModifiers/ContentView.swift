@@ -42,6 +42,11 @@ struct ContentView: View {
         // String was getting truncated inside text view sometimes
         .frame(maxWidth: .infinity)
     }
+    private var watermarkedRectangle: some View {
+        Color.green
+            .watermarked(with: "Samantha Gatt")
+            .frame(width: 150, height: 50)
+    }
     private var environmentModifierStack: some View {
         VStack {
             Text("1")
@@ -64,6 +69,7 @@ struct ContentView: View {
                 rainbowText
                 capsuleTextStack
                 Spacer()
+                watermarkedRectangle
                 environmentModifierStack
                 buttonWithYellowBackground
             }
