@@ -10,6 +10,9 @@ import SwiftUI
 
 struct ContentView: View {
     
+    private let gridStackContent = [[1, 2, 3],
+                                    [4, 5, 6],
+                                    [7, 8, 9]]
     private var backgroundHelloWorld: some View {
         Text("Hello, World!")
             .titleStyle()
@@ -55,11 +58,19 @@ struct ContentView: View {
         }.font(.title)
     }
     private var buttonWithYellowBackground: some View {
-        Button("Hello") {
+        Button(action: {
             // prints `ModifiedContent<ModifiedContent<Text, _FrameLayout>, _BackgroundModifier<Color>>`
             print(type(of: Text("Hello").frame(width: 100, height: 100).background(Color.blue)))
-        }.frame(width: 150, height: 150)
-            .background(Color.yellow)
+        }) {
+            GridStack(rows: 3, columns: 3){ (row, column) in
+                HStack {
+                    Image(systemName: "\(self.gridStackContent[row][column]).circle")
+                    Text("(\(row), \(column))")
+                }
+//                Text("\(self.gridStackContent[row][column])")
+            }.frame(width: 300, height: 150)
+                .background(Color.yellow)
+        }
     }
     
     var body: some View {
