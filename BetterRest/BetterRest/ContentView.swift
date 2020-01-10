@@ -13,6 +13,15 @@ struct ContentView: View {
     @State private var wakeUpDate = Date()
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
+    @State private var calculationTitle = ""
+    @State private var calculationDescription = ""
+    @State private var calculationShowing = false
+    
+    private var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return formatter
+    }()
     
     private var wakeUpStack: some View {
         VStack {
@@ -53,12 +62,29 @@ struct ContentView: View {
                 sleepAmountStack
                 coffeeAmountStack
             }.navigationBarTitle("BetterRest")
-            .navigationBarItems(trailing: calculateButton)
+                .navigationBarItems(trailing: calculateButton)
+                .alert(isPresented: $calculationShowing) {
+                    Alert(title: Text(calculationTitle), message: Text(calculationDescription), dismissButton: .default(Text("Okay")))
+            }
         }
     }
     
     private func calculateBedtime() {
-        // TODO: implement function
+        let model = SleepCalculator()
+        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: wakeUpDate)
+        let hoursInMin = (dateComponents.hour ?? 0) * 60
+        let minutes = dateComponents.minute ?? 0
+        
+        do {
+            let prediction = try model.prediction(wake: Double(hoursInMin + minutes), estimatedSleep: sleepAmount, coffee: Double(coffeeAmount))
+            let sleepTime = wakeUpDate - prediction.actualSleep
+            calculationTitle = "Your ideal bedtime is"
+            calculationDescription = dateFormatter.string(from: sleepTime)
+        } catch {
+            calculationTitle = "Oops!"
+            calculationDescription = "Looks like something went wrong. Error: \(error)"
+        }
+        calculationShowing = true
     }
 }
 

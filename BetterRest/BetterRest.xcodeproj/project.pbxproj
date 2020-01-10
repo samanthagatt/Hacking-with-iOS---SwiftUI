@@ -13,6 +13,7 @@
 		D60E69F523C7DD5200DAF6D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E69F423C7DD5200DAF6D3 /* Assets.xcassets */; };
 		D60E69F823C7DD5200DAF6D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E69F723C7DD5200DAF6D3 /* Preview Assets.xcassets */; };
 		D60E69FB23C7DD5200DAF6D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60E69F923C7DD5200DAF6D3 /* LaunchScreen.storyboard */; };
+		D60E6A0523C939C100DAF6D3 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D60E6A0423C939C100DAF6D3 /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D60E69F723C7DD5200DAF6D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D60E69FA23C7DD5200DAF6D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D60E69FC23C7DD5200DAF6D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D60E6A0423C939C100DAF6D3 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		D60E69ED23C7DD5000DAF6D3 /* BetterRest */ = {
 			isa = PBXGroup;
 			children = (
+				D60E6A0423C939C100DAF6D3 /* SleepCalculator.mlmodel */,
 				D60E69EE23C7DD5000DAF6D3 /* AppDelegate.swift */,
 				D60E69F023C7DD5000DAF6D3 /* SceneDelegate.swift */,
 				D60E69F223C7DD5000DAF6D3 /* ContentView.swift */,
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60E6A0523C939C100DAF6D3 /* SleepCalculator.mlmodel in Sources */,
 				D60E69EF23C7DD5000DAF6D3 /* AppDelegate.swift in Sources */,
 				D60E69F123C7DD5000DAF6D3 /* SceneDelegate.swift in Sources */,
 				D60E69F323C7DD5000DAF6D3 /* ContentView.swift in Sources */,
