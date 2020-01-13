@@ -24,19 +24,29 @@ struct ContentView: View {
                     .autocapitalization(.none)
                     .padding()
                 List(usedWords, id: \.self) {
+                    Text($0)
                     Image(systemName: "\($0.count).circle")
                         .foregroundColor(.gray)
-                    Text($0)
                 }
             }.navigationBarTitle(rootWord)
-                .alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Oops"), message: Text(alertMessage), dismissButton: .default(Text("Okay")))
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Oops"), message: Text(alertMessage), dismissButton: .default(Text("Okay")))
             }
+            .onAppear(perform: startGame)
         }
     }
     
     private func updateAlertMessage() {
         alertMessage = "Your answer must be between 1 and \(rootWord.count) characters excluding whitespaces and new lines"
+    }
+    private func startGame() {
+        guard let url = Bundle.main.url(forResource: "start", withExtension: "txt") else { fatalError("Can't find word source file")}
+        do {
+            let allWords = try String(contentsOf: url).components(separatedBy: "\n")
+            rootWord = allWords.randomElement() ?? "silkworm"
+        } catch {
+            fatalError("Error reading word source file: \(error)")
+        }
     }
     private func addAttemptedWord() {
         let word = attemptedWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)

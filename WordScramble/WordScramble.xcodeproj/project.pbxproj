@@ -13,6 +13,7 @@
 		D60E6A1923C9450C00DAF6D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E6A1823C9450C00DAF6D3 /* Assets.xcassets */; };
 		D60E6A1C23C9450C00DAF6D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E6A1B23C9450C00DAF6D3 /* Preview Assets.xcassets */; };
 		D60E6A1F23C9450C00DAF6D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60E6A1D23C9450C00DAF6D3 /* LaunchScreen.storyboard */; };
+		D60E6A2723CD08E300DAF6D3 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = D60E6A2623CD08E300DAF6D3 /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D60E6A1B23C9450C00DAF6D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D60E6A1E23C9450C00DAF6D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D60E6A2023C9450C00DAF6D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D60E6A2623CD08E300DAF6D3 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				D60E6A1823C9450C00DAF6D3 /* Assets.xcassets */,
 				D60E6A1D23C9450C00DAF6D3 /* LaunchScreen.storyboard */,
 				D60E6A2023C9450C00DAF6D3 /* Info.plist */,
+				D60E6A2823CD08EA00DAF6D3 /* Resources */,
 				D60E6A1A23C9450C00DAF6D3 /* Preview Content */,
 			);
 			path = WordScramble;
@@ -73,6 +76,14 @@
 				D60E6A1B23C9450C00DAF6D3 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D60E6A2823CD08EA00DAF6D3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D60E6A2623CD08E300DAF6D3 /* start.txt */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D60E6A1F23C9450C00DAF6D3 /* LaunchScreen.storyboard in Resources */,
+				D60E6A2723CD08E300DAF6D3 /* start.txt in Resources */,
 				D60E6A1C23C9450C00DAF6D3 /* Preview Assets.xcassets in Resources */,
 				D60E6A1923C9450C00DAF6D3 /* Assets.xcassets in Resources */,
 			);
