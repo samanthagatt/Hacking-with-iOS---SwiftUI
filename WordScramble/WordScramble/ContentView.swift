@@ -55,7 +55,7 @@ struct ContentView: View {
     private func showAlert(_ error: ValidationError) {
         switch error {
         case .notInRange:
-            alertMessage = "Your answer must be between 1 and \(rootWord.count) characters excluding whitespaces and new lines"
+            alertMessage = "Your answer must be between 2 and \(rootWord.count) characters excluding whitespaces and new lines"
         case .duplicate:
             alertMessage = "You've already tried \(attemptedWord)!"
         case .notPossible:
@@ -79,7 +79,7 @@ struct ContentView: View {
     private func validateAttemptedWord() -> String? {
         let word = attemptedWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         
-        guard word.count > 0,
+        guard word.count > 1,
             word.count <= rootWord.count else {
                 showAlert(.notInRange)
                 return nil
@@ -91,13 +91,6 @@ struct ContentView: View {
             return nil
         }
         
-        // Makes sure user hasn't already tried that word
-        guard !attemptedWords.contains(word) else {
-            showAlert(.duplicate)
-            return nil
-        }
-        attemptedWords.insert(word)
-        
         // Makes sure attempted word is a possible combination of letters
         var tempRoot = rootWord
         for letter in word {
@@ -107,6 +100,13 @@ struct ContentView: View {
             }
             tempRoot.remove(at: i)
         }
+        
+        // Makes sure user hasn't already tried that word
+        guard !attemptedWords.contains(word) else {
+            showAlert(.duplicate)
+            return nil
+        }
+        attemptedWords.insert(word)
         
         // Makes sure attempted word is spelled correctly
         let range = NSRange(location: 0, length: word.utf16.count)
