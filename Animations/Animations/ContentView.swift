@@ -9,8 +9,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var buttonScale: CGFloat = 1.0
+    
     var body: some View {
-        Text("Hello, World!")
+        Button("Tap me") {
+            self.buttonScale += 1.0
+        }.padding(50)
+        .background(Color.red)
+        .foregroundColor(.white)
+        .clipShape(Circle())
+        .scaleEffect(buttonScale)
+        .blur(radius: (buttonScale - 1) * 3)
+        .animation(.default)
     }
 }
 
