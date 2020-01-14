@@ -21,7 +21,12 @@ struct ContentView: View {
         .clipShape(Circle())
         .scaleEffect(buttonScale)
         .blur(radius: (buttonScale - 1) * 3)
-        .animation(.default)
+        // .animation(.easeInOut(duration: 3))
+        .animation(
+            Animation.interpolatingSpring(stiffness: 30, damping: 4)
+                .delay(0.5)
+                .repeatCount(3, autoreverses: true)
+        )
     }
 }
 
