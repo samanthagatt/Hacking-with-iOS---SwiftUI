@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var buttonScale: CGFloat = 1.0
     @State private var radarScale: CGFloat = 1.0
     @State private var rotationAngle = 0.0
+    @State private var spinButtonRounded = false
     
     // MARK: Subviews
     private var radarCircle: some View {
@@ -36,11 +37,10 @@ struct ContentView: View {
                 .padding(50)
                 .background(Color.red)
                 .foregroundColor(.white)
-                .clipShape(Circle())
-                .overlay(radarCircle)
-                .scaleEffect(buttonScale)
-                .blur(radius: (buttonScale - 1) * 3)
-        }
+        }.clipShape(Circle())
+        .overlay(radarCircle)
+        .scaleEffect(buttonScale)
+        .blur(radius: (buttonScale - 1) * 3)
     }
     private var animationStepper: some View {
         Stepper("Scale amount",
@@ -55,16 +55,21 @@ struct ContentView: View {
     }
     private var spinButton: some View {
         Button(action: {
+            self.spinButtonRounded.toggle()
             withAnimation {
                 self.rotationAngle += 360
             }
         }) {
             Text("Spin me")
                 .padding()
-                .background(Color.yellow)
-                .foregroundColor(.white)
-        }.rotation3DEffect(.degrees(rotationAngle),
-                           axis: (x: 0, y: 1, z: 0))
+                .foregroundColor(spinButtonRounded ? .black : .white)
+                .animation(nil)
+                .background(spinButtonRounded ? Color.orange : Color.yellow)
+                .animation(.linear)
+        }.clipShape(RoundedRectangle(cornerRadius: spinButtonRounded ? 60 : 0))
+        .animation(.default)
+        .rotation3DEffect(.degrees(rotationAngle),
+                          axis: (x: 0, y: 1, z: 0))
     }
     
     // MARK: Content body
