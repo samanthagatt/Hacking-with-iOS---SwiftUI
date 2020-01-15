@@ -13,6 +13,7 @@ struct ContentView: View {
     // MARK: State variables
     @State private var buttonScale: CGFloat = 1.0
     @State private var radarScale: CGFloat = 1.0
+    @State private var rotationAngle = 0.0
     
     // MARK: Subviews
     private var radarCircle: some View {
@@ -52,6 +53,19 @@ struct ContentView: View {
                 step: 0.5)
             .padding()
     }
+    private var spinButton: some View {
+        Button(action: {
+            withAnimation {
+                self.rotationAngle += 360
+            }
+        }) {
+            Text("Spin me")
+                .padding()
+                .background(Color.yellow)
+                .foregroundColor(.white)
+        }.rotation3DEffect(.degrees(rotationAngle),
+                           axis: (x: 0, y: 1, z: 0))
+    }
     
     // MARK: Content body
     var body: some View {
@@ -59,6 +73,8 @@ struct ContentView: View {
             animationStepper
             Spacer()
             animatedButton
+            Spacer()
+            spinButton
             Spacer()
         }
         .onAppear {
