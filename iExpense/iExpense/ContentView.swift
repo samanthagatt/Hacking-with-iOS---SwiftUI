@@ -30,11 +30,19 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(expenses.items) { item in
-                    Text(item.name)
+                    HStack {
+                        VStack {
+                            Text(item.name)
+                                .font(.headline)
+                            Text(item.type)
+                        }
+                        Spacer()
+                        Text("$\(item.amount)")
+                    }
                 }.onDelete(perform: removeExpenses(at:))
             }.navigationBarTitle("iExpense")
             .navigationBarItems(trailing: addButton)
-                .sheet(isPresented: $addExpenseIsShowing) {
+            .sheet(isPresented: $addExpenseIsShowing) {
                     AddExpenseView(expenses: self.expenses)
             }
         }

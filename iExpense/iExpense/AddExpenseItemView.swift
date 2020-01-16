@@ -10,6 +10,9 @@ import SwiftUI
 
 struct AddExpenseView: View {
     
+    // MARK: Environment
+    @Environment(\.presentationMode) var presentationMode
+    
     // MARK: Observed properties
     @ObservedObject var expenses: Expenses
     
@@ -28,6 +31,7 @@ struct AddExpenseView: View {
             guard let amount = Int(self.amount) else { return }
             let expense = Expense(name: self.name, type: self.type, amount: amount)
             self.expenses.items.append(expense)
+            self.presentationMode.wrappedValue.dismiss()
         }
     }
     
