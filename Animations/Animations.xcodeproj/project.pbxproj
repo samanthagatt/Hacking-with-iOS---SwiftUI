@@ -13,6 +13,7 @@
 		D60E6A3C23CE698500DAF6D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E6A3B23CE698500DAF6D3 /* Assets.xcassets */; };
 		D60E6A3F23CE698500DAF6D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D60E6A3E23CE698500DAF6D3 /* Preview Assets.xcassets */; };
 		D60E6A4223CE698500DAF6D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D60E6A4023CE698500DAF6D3 /* LaunchScreen.storyboard */; };
+		D60E6A4C23D038BA00DAF6D3 /* CornerRotationModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60E6A4B23D038B900DAF6D3 /* CornerRotationModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		D60E6A3E23CE698500DAF6D3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D60E6A4123CE698500DAF6D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D60E6A4323CE698500DAF6D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D60E6A4B23D038B900DAF6D3 /* CornerRotationModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRotationModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				D60E6A3523CE698200DAF6D3 /* AppDelegate.swift */,
 				D60E6A3723CE698200DAF6D3 /* SceneDelegate.swift */,
 				D60E6A3923CE698200DAF6D3 /* ContentView.swift */,
+				D60E6A4B23D038B900DAF6D3 /* CornerRotationModifier.swift */,
 				D60E6A3B23CE698500DAF6D3 /* Assets.xcassets */,
 				D60E6A4023CE698500DAF6D3 /* LaunchScreen.storyboard */,
 				D60E6A4323CE698500DAF6D3 /* Info.plist */,
@@ -149,6 +152,7 @@
 				D60E6A3623CE698200DAF6D3 /* AppDelegate.swift in Sources */,
 				D60E6A3823CE698200DAF6D3 /* SceneDelegate.swift in Sources */,
 				D60E6A3A23CE698200DAF6D3 /* ContentView.swift in Sources */,
+				D60E6A4C23D038BA00DAF6D3 /* CornerRotationModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

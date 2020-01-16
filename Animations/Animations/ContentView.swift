@@ -131,7 +131,7 @@ struct ContentView: View {
                         Rectangle()
                             .stroke(Color.orange, lineWidth: 2)
                     )
-                    .transition(.asymmetric(insertion: .scale, removal: .slide))
+                    .transition(.asymmetric(insertion: .pivot, removal: .slide))
             }
         }
     }
