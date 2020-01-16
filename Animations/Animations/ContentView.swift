@@ -15,6 +15,7 @@ struct ContentView: View {
     @State private var radarScale: CGFloat = 1.0
     @State private var rotationAngle = 0.0
     @State private var spinButtonRounded = false
+    @State private var dragSize: CGSize = .zero
     
     // MARK: Subviews
     private var radarCircle: some View {
@@ -53,6 +54,26 @@ struct ContentView: View {
                 step: 0.5)
             .padding()
     }
+    private var dragView: some View {
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.red, .yellow]),
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
+                .frame(width: 300, height: 200)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            Text("Drag me")
+                .foregroundColor(.white)
+        }.offset(dragSize)
+        .gesture(
+            DragGesture()
+                .onChanged { self.dragSize = $0.translation }
+                .onEnded { _ in
+                    withAnimation(.spring()) {
+                        self.dragSize = .zero
+                    }
+                }
+        )
+    }
     private var spinButton: some View {
         Button(action: {
             self.spinButtonRounded.toggle()
@@ -78,6 +99,8 @@ struct ContentView: View {
             animationStepper
             Spacer()
             animatedButton
+            Spacer()
+            dragView
             Spacer()
             spinButton
             Spacer()
