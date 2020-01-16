@@ -18,7 +18,7 @@ struct ContentView: View {
     @State private var dragSize: CGSize = .zero
     @State private var stringDragSize: CGSize = .zero
     @State private var stringViewActive = false
-    
+    @State private var selectedLetter = 0
     
     // MARK: Properties
     private let letterArray = Array("Hello world")
@@ -82,28 +82,30 @@ struct ContentView: View {
     }
     private var stringDragView: some View {
         HStack(spacing: 0) {
-            ForEach(0..<letterArray.count) {
-                Text(String(self.letterArray[$0]))
+            ForEach(0..<letterArray.count) { i in
+                Text(String(self.letterArray[i]))
                     .foregroundColor(.white)
                     .font(.headline)
                     .padding(5)
                     .background(self.stringViewActive ? Color.yellow : Color.orange)
                     .offset(self.stringDragSize)
                 .animation(
-                    Animation.default.delay(Double($0) / 20)
+                    Animation.default.delay(self.getDelay(i))
+                )
+                .gesture(
+                    DragGesture()
+                        .onChanged {
+                            self.stringDragSize = $0.translation
+                            self.stringViewActive = true
+                            self.selectedLetter = i
+                        }
+                        .onEnded { _ in
+                            self.stringDragSize = .zero
+                            self.stringViewActive = false
+                        }
                 )
             }
-        }.gesture(
-            DragGesture()
-                .onChanged {
-                    self.stringDragSize = $0.translation
-                    self.stringViewActive = true
-                }
-                .onEnded { _ in
-                    self.stringDragSize = .zero
-                    self.stringViewActive = false
-                }
-        )
+        }
     }
     private var spinButton: some View {
         Button(action: {
@@ -141,6 +143,13 @@ struct ContentView: View {
         .onAppear {
             self.radarScale = 2
         }
+    }
+    
+    // MARK: Methods
+    private func getDelay(_ i: Int) -> Double {
+        let sDiff = Double( i - selectedLetter)
+        let uDiff = sDiff.sign == .minus ? -sDiff : sDiff
+        return uDiff / 20
     }
 }
 
