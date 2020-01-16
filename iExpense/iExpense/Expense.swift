@@ -12,7 +12,7 @@ struct Expense: Identifiable, Codable {
     let id = UUID()
     let name: String
     let type: String
-    let amount: Int
+    let amount: Double
 }
 
 class Expenses: ObservableObject {
@@ -26,6 +26,9 @@ class Expenses: ObservableObject {
         }
     }
     
+    init(items: [Expense]) {
+        self.items = items
+    }
     init(fromUserDefaults: Bool = true) {
         if fromUserDefaults {
             guard let itemsData = UserDefaults.standard.data(forKey: Expenses.itemsKey),

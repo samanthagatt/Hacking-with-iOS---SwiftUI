@@ -37,11 +37,11 @@ struct ContentView: View {
                             Text(item.type)
                         }
                         Spacer()
-                        Text("$\(item.amount)")
+                        Text("$\(item.amount, specifier: "%.2f")")
                     }
                 }.onDelete(perform: removeExpenses(at:))
             }.navigationBarTitle("iExpense")
-            .navigationBarItems(trailing: addButton)
+                .navigationBarItems(leading: EditButton(), trailing: addButton)
             .sheet(isPresented: $addExpenseIsShowing) {
                     AddExpenseView(expenses: self.expenses)
             }
