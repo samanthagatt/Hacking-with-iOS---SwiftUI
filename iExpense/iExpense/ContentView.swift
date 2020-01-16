@@ -13,11 +13,13 @@ struct ContentView: View {
     // MARK: Observed properties
     @ObservedObject var expenses = Expenses()
     
+    // MARK: State properties
+    @State private var addExpenseIsShowing = false
+    
     // MARK: Subviews
     private var addButton: some View {
         Button(action: {
-            let expenseItem = ExpenseItem(name: "Testing", type: "Personal", amount: 5)
-            self.expenses.items.append(expenseItem)
+            self.addExpenseIsShowing = true
         }) {
             Image(systemName: "plus")
         }
@@ -29,14 +31,17 @@ struct ContentView: View {
             List {
                 ForEach(expenses.items) { item in
                     Text(item.name)
-                }.onDelete(perform: removeExpenseItems(at:))
+                }.onDelete(perform: removeExpenses(at:))
             }.navigationBarTitle("iExpense")
             .navigationBarItems(trailing: addButton)
+                .sheet(isPresented: $addExpenseIsShowing) {
+                    AddExpenseView(expenses: self.expenses)
+            }
         }
     }
     
     // MARK: Methods
-    private func removeExpenseItems(at offsets: IndexSet) {
+    private func removeExpenses(at offsets: IndexSet) {
         self.expenses.items.remove(atOffsets: offsets)
     }
 }

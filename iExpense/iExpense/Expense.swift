@@ -1,5 +1,5 @@
 //
-//  ExpenseItem.swift
+//  Expense.swift
 //  iExpense
 //
 //  Created by Samantha Gatt on 1/16/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ExpenseItem: Identifiable {
+struct Expense: Identifiable {
     let id = UUID()
     let name: String
     let type: String
@@ -16,5 +16,5 @@ struct ExpenseItem: Identifiable {
 }
 
 class Expenses: ObservableObject {
-    @Published var items: [ExpenseItem] = []
+    @Published var items: [Expense] = []
 }
