@@ -16,6 +16,12 @@ struct ContentView: View {
     @State private var rotationAngle = 0.0
     @State private var spinButtonRounded = false
     @State private var dragSize: CGSize = .zero
+    @State private var stringDragSize: CGSize = .zero
+    @State private var stringViewActive = false
+    
+    
+    // MARK: Properties
+    private let letterArray = Array("Hello world")
     
     // MARK: Subviews
     private var radarCircle: some View {
@@ -59,7 +65,7 @@ struct ContentView: View {
             LinearGradient(gradient: Gradient(colors: [.red, .yellow]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
-                .frame(width: 300, height: 200)
+                .frame(width: 100, height: 100)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             Text("Drag me")
                 .foregroundColor(.white)
@@ -71,6 +77,31 @@ struct ContentView: View {
                     withAnimation(.spring()) {
                         self.dragSize = .zero
                     }
+                }
+        )
+    }
+    private var stringDragView: some View {
+        HStack(spacing: 0) {
+            ForEach(0..<letterArray.count) {
+                Text(String(self.letterArray[$0]))
+                    .foregroundColor(.white)
+                    .font(.headline)
+                    .padding(5)
+                    .background(self.stringViewActive ? Color.yellow : Color.orange)
+                    .offset(self.stringDragSize)
+                .animation(
+                    Animation.default.delay(Double($0) / 20)
+                )
+            }
+        }.gesture(
+            DragGesture()
+                .onChanged {
+                    self.stringDragSize = $0.translation
+                    self.stringViewActive = true
+                }
+                .onEnded { _ in
+                    self.stringDragSize = .zero
+                    self.stringViewActive = false
                 }
         )
     }
@@ -101,6 +132,8 @@ struct ContentView: View {
             animatedButton
             Spacer()
             dragView
+            Spacer()
+            stringDragView
             Spacer()
             spinButton
             Spacer()
