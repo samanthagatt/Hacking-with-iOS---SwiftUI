@@ -19,9 +19,13 @@ struct ContentView: View {
     @State private var stringDragSize: CGSize = .zero
     @State private var stringViewActive = false
     @State private var selectedLetter = 0
+    @State private var hideMeIsShowing = true
     
     // MARK: Properties
     private let letterArray = Array("Hello world")
+    private var hideItText: String {
+        return hideMeIsShowing ? "Hide it" : "Show it"
+    }
     
     // MARK: Subviews
     private var radarCircle: some View {
@@ -62,7 +66,7 @@ struct ContentView: View {
     }
     private var dragView: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.red, .yellow]),
+            LinearGradient(gradient: Gradient(colors: [.red, .orange]),
                            startPoint: .topLeading,
                            endPoint: .bottomTrailing)
                 .frame(width: 100, height: 100)
@@ -107,6 +111,30 @@ struct ContentView: View {
             }
         }
     }
+    private var hideMeView: some View {
+        VStack(spacing: 10) {
+            Button(action: {
+                withAnimation {
+                    self.hideMeIsShowing.toggle()
+                }
+            }) {
+                Text(hideItText)
+                    .foregroundColor(.white)
+                    .frame(width: 200, height: 30)
+                    .background(Color.orange)
+            }
+            if hideMeIsShowing {
+                Text("^^ Hide me ^^")
+                    .foregroundColor(.orange)
+                    .frame(width: 200, height: 30)
+                    .overlay(
+                        Rectangle()
+                            .stroke(Color.orange, lineWidth: 2)
+                    )
+                    .transition(.asymmetric(insertion: .scale, removal: .slide))
+            }
+        }
+    }
     private var spinButton: some View {
         Button(action: {
             self.spinButtonRounded.toggle()
@@ -129,16 +157,30 @@ struct ContentView: View {
     // MARK: Content body
     var body: some View {
         VStack {
-            animationStepper
-            Spacer()
-            animatedButton
-            Spacer()
-            dragView
-            Spacer()
-            stringDragView
-            Spacer()
-            spinButton
-            Spacer()
+            Group {
+                animationStepper
+                Spacer()
+            }
+            Group {
+                animatedButton
+                Spacer()
+            }
+            Group {
+                dragView
+                Spacer()
+            }
+            Group {
+                stringDragView
+                Spacer()
+            }
+            Group {
+                hideMeView
+                Spacer()
+            }
+            Group {
+                spinButton
+                Spacer()
+            }
         }
         .onAppear {
             self.radarScale = 2
@@ -147,7 +189,7 @@ struct ContentView: View {
     
     // MARK: Methods
     private func getDelay(_ i: Int) -> Double {
-        let sDiff = Double( i - selectedLetter)
+        let sDiff = Double(i - selectedLetter)
         let uDiff = sDiff.sign == .minus ? -sDiff : sDiff
         return uDiff / 20
     }
