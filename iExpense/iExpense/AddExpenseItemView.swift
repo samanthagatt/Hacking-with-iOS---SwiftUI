@@ -22,6 +22,15 @@ struct AddExpenseView: View {
     @State private var type = ""
     @State private var amount = ""
     
+    // MARK: Subviews
+    private var saveButton: some View {
+        Button("Save") {
+            guard let amount = Int(self.amount) else { return }
+            let expense = Expense(name: self.name, type: self.type, amount: amount)
+            self.expenses.items.append(expense)
+        }
+    }
+    
     // MARK: Content body
     var body: some View {
         NavigationView {
@@ -35,6 +44,7 @@ struct AddExpenseView: View {
                 TextField("Amount", text: $amount)
                     .keyboardType(.numberPad)
             }.navigationBarTitle("Add new expense")
+            .navigationBarItems(trailing: saveButton)
         }
     }
 }
