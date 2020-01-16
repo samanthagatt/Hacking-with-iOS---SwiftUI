@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Expense: Identifiable {
+struct Expense: Identifiable, Codable {
     let id = UUID()
     let name: String
     let type: String
@@ -16,5 +16,21 @@ struct Expense: Identifiable {
 }
 
 class Expenses: ObservableObject {
-    @Published var items: [Expense] = []
+    /// UserDefaults key for stored items as data
+    static let itemsKey = "Expense items"
+    
+    @Published var items: [Expense] = [] {
+        didSet {
+            guard let encoded = try? JSONEncoder().encode(items) else { return }
+            UserDefaults.standard.set(encoded, forKey: Self.itemsKey)
+        }
+    }
+    
+    init(fromUserDefaults: Bool = true) {
+        if fromUserDefaults {
+            guard let itemsData = UserDefaults.standard.data(forKey: Expenses.itemsKey),
+                let items = try? JSONDecoder().decode([Expense].self, from: itemsData) else { return }
+            self.items = items
+        }
+    }
 }

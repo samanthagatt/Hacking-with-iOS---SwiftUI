@@ -18,7 +18,7 @@ struct AddExpenseView: View {
     
     // MARK: Static properties
     static var types = ["Business"
-    , "Personal"]
+    , "Personal", "Education"]
     
     // MARK: State properties
     @State private var name = ""

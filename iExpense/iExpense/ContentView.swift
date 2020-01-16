@@ -31,7 +31,7 @@ struct ContentView: View {
             List {
                 ForEach(expenses.items) { item in
                     HStack {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text(item.name)
                                 .font(.headline)
                             Text(item.type)
